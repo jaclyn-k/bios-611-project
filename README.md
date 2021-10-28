@@ -25,3 +25,8 @@ The Shiny visualization will allow you to explore a simple histogram of median r
 
 To view this visualization, you can open the file 'R_Shiny.R' and run the full code. The Shiny viz should automatically launch. 
 
+References
+----------
+Data courtesy of ted8080 via kaggle. Original dataset available here:
+https://www.kaggle.com/ted8080/nyc-housing-dataset-extrinsic-factors
+
