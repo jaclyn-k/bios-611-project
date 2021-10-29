@@ -1,13 +1,14 @@
 NYC Housing Data Analysis
 ==========================
+Welcome to my term project for BIOS 611. In this project, I am exploring social determinants of health variables from an NYC Housing dataset broken down by boro and sub-boro. Here are the steps to get started working with this project: 
 
-In order to run this project, first you must build the docker container:
+1. Visit the terminal and build the docker container:
 
 ```
 docker build . -t nychousing
 ```
 
-Start an Rstudio session in any browser by running this code in  terminal:
+2. Initialize an Rstudio session by visitng the terminal and running this code:
 
 ```
 docker run -e PASSWORD=yourpassword \
@@ -15,9 +16,14 @@ docker run -e PASSWORD=yourpassword \
   -p 8787:8787 --rm\
   nychousing
 ```
-Go to http://localhost:8787 in your browser. Log in with user `rstudio` and password `yourpassword`.
+3. Access the Rstudio session by going to http://localhost:8787 in any internet browser. Log in with user `rstudio` and password `yourpassword`.
 
-Components of the project
+4. To build the final report, type into your terminal:
+```
+make report.pdf
+```
+
+Explanation of Components of the project
 =========================
 
 Shiny Visualization:
