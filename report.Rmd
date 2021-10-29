@@ -1,0 +1,20 @@
+---
+title: "report"
+author: "jaclyn karasik"
+date: "10/29/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+This is my final project report. 
+
+Here is a figure.
+
+![hello figure](my_first_plot.png)
+Here is a table.
+```{r echo = FALSE, results = 'asis'}
+source("clean_data.R")
+library(knitr)
+kable(collapsed[,1:5], caption = "My first table.")
+```
