@@ -18,3 +18,8 @@ source("clean_data.R")
 library(knitr)
 kable(collapsed[,1:5], caption = "My first table.")
 ```
+
+```{r echo = FALSE}
+
+```
+

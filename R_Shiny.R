@@ -2,7 +2,7 @@
 # Setup -------------------------------------------------------------------
 
 install.packages("shiny");
-rawdata <- read.csv("~/work/NYC_Housing_Data.csv")
+rawdata <- read.csv("./NYC_Housing_Data.csv")
 
 # RShiny Visualization ----------------------------------------------------
 

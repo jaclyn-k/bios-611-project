@@ -8,7 +8,7 @@ Welcome to my term project for BIOS 611. In this project, I am exploring social 
 docker build . -t nychousing
 ```
 
-2. Initialize an Rstudio session by visitng the terminal and running this code:
+2. Initialize an Rstudio session by visiting the terminal and running this code:
 
 ```
 docker run -e PASSWORD=yourpassword \
@@ -16,7 +16,11 @@ docker run -e PASSWORD=yourpassword \
   -p 8787:8787 --rm\
   nychousing
 ```
-3. Access the Rstudio session by going to http://localhost:8787 in any internet browser. Log in with user `rstudio` and password `yourpassword`.
+3. Access the Rstudio session by going to http://localhost:8787 in any internet browser. Log in with user `rstudio` and password `yourpassword`. Enter the following code to set the working directory:
+
+```
+setwd("~/work")
+```
 
 4. To build the final report, type into your terminal:
 ```
