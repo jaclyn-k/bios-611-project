@@ -13,6 +13,11 @@ figures/my_first_plot.png: clean_data/clean_data.csv utils.R R_analysis.R
 	mkdir -p figures
 	Rscript R_analysis.R
 
-report.pdf: figures/my_first_plot.png clean_data.R utils.R 
+/tmp/tinytex_installed:
+	rm -f /tmp/tinytex_installed
+	Rscript install_tinytext.R
+	touch /tmp/tinytex_installed
+	
+report.pdf: /tmp/tinytex_installed figures/my_first_plot.png clean_data.R utils.R 
 	Rscript -e "rmarkdown::render('report.Rmd')"
 	
