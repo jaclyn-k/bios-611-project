@@ -11,7 +11,7 @@ This is my final project report.
 
 Here is a figure.
 
-![hello figure](my_first_plot.png)
+![hello figure](figures/my_first_plot.png)
 Here is a table.
 ```{r echo = FALSE, results = 'asis'}
 source("clean_data.R")
