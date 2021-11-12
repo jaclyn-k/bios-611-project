@@ -2,7 +2,7 @@ NYC Housing Data Analysis
 ==========================
 Welcome to my term project for BIOS 611. In this project, I am exploring social determinants of health variables from an NYC Housing dataset broken down by boro and sub-boro. Here are the steps to get started working with this project: 
 
-1. Visit the terminal and build the docker container:
+1. Visit the terminal and build the docker container using the code below. (If you do not have docker installed, you can install it here: https://docs.docker.com/get-docker/)
 
 ```
 docker build . -t nychousing
