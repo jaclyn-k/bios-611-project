@@ -1,30 +1,37 @@
 library(tidyverse);
+library(stringr);
 source("utils.R");
+library(devtools)
 
-rawdata <- read.csv("source_data/NYC_Housing_Data.csv");
+housing <- read.csv("source_data/NYC_Housing_Data.csv")
+covid <- read.csv("source_data/covidcases_nov15.csv")
+setwd("~/work")
 
-# Creat data by boros
-onlyboros <- rawdata %>% 
-  select(-sub_boro_names)
 
-collapsed <- 
-  onlyboros %>%
-  group_by(boro_names) %>%
-  summarize_all(mean);
-collapsed
+# COVID Data Clean --------------------------------------------------------
 
-#Exploratory: Just looking at Brooklyn-based sub-boros
-aggregate(poverty_rate ~ boro_names, data = rawdata, mean)
+covid <- covid %>%
+  mutate_at("neighborhood", str_replace, "Bronx ", "") %>%
+  mutate_at("neighborhood", str_replace, "Manhattan ", "") %>%
+  mutate_at("neighborhood", str_replace, "Brooklyn ", "") %>%
+  mutate_at("neighborhood", str_replace, "Queens ", "") %>%
+  mutate_at("neighborhood", str_replace, "Staten Island ", "") %>%
+  mutate_at("totalcases", str_replace, ",", "") %>%
+  mutate_at("cases_per100k", str_replace, ",", "") %>%
+  transform(totalcases = as.numeric(totalcases), 
+            cases_per100k = as.numeric(cases_per100k)) %>%
+  mutate_at("neighborhood", str_trim, side = "both")
 
-just_brooklyn <- filter(rawdata, boro_names=="Brooklyn");
+covid_ag <- 
+  aggregate(totalcases ~ neighborhood, data = covid, sum) %>%
+  mutate(aggregate(cases_per100k ~ neighborhood, data = covid, sum))
 
-just_brooklyn %>%
-  group_by(unemployment) %>%
-  tally() %>%
-  arrange(n);
+# cleanstats <- rename(rawdata, neighborhood = sub_boro_names)
+# write_csv(covid_ag, "clippedboro.csv")
 
-v_unemployed <- filter(just_brooklyn, unemployment>0.1)
+# joined <- full_join(cleanstats, covid_ag, by = "neighborhood", copy=T,  suffix=c(".house",".cov")) 
 
-# Just making target of collapsed data by boro
+# Targets -----------------------------------------------------------------
+
 ensure_directory("clean_data")
-write_csv(collapsed, "clean_data/clean_data.csv")
+write_csv(housing, "clean_data/clean_data.csv")
