@@ -37,6 +37,8 @@ To view this visualization, you can open the file 'R_Shiny.R' and run the full c
 
 References
 ----------
-Data courtesy of ted8080 via kaggle. Original dataset available here:
+Social determinants data compiled by ted8080 via kaggle. Original dataset available here:
 https://www.kaggle.com/ted8080/nyc-housing-dataset-extrinsic-factors
+
+COVID-19 data by neighborhood compiled by New York Times, scraped from here: https://www.nytimes.com/interactive/2020/nyregion/new-york-city-coronavirus-cases.html#tips. Data scraped on November 15, 2021.
 
