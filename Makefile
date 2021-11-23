@@ -8,16 +8,32 @@ clean:
 clean_data/clean_data.csv: utils.R source_data/NYC_Housing_Data.csv clean_data.R
 	mkdir -p clean_data
 	Rscript clean_data.R
-
-figures/my_first_plot.png: clean_data/clean_data.csv utils.R R_analysis.R
-	mkdir -p figures
-	Rscript R_analysis.R
-
-/tmp/tinytex_installed:
-	rm -f /tmp/tinytex_installed
-	Rscript install_tinytext.R
-	touch /tmp/tinytex_installed
 	
-report.pdf: /tmp/tinytex_installed figures/my_first_plot.png clean_data.R utils.R 
+figures/sdoh_exploratory.png: clean_data/clean_data.csv utils.R aim1.R 
+	mkdir -p figures
+	Rscript aim1.R
+	
+figures/sdoh_pca.png: clean_data/clean_data.csv utils.R aim1.R 
+	mkdir -p figures
+	Rscript aim1.R
+	
+figures/sdoh_pov_pca.png: clean_data/clean_data.csv utils.R aim1.R 
+	mkdir -p figures
+	Rscript aim1.R
+	
+figures/access_dis_pca.png: clean_data/clean_data.csv utils.R aim2.R 
+	mkdir -p figures
+	Rscript aim2.R
+
+figures/access_factors.png: clean_data/clean_data.csv utils.R aim2.R 
+	mkdir -p figures
+	Rscript aim2.R
+
+figures/access_pca.png: clean_data/clean_data.csv utils.R aim2.R 
+	mkdir -p figures
+	Rscript aim2.R 
+
+	
+report.pdf: figures/sdoh_exploratory.png figures/sdoh_pca.png figures/sdoh_pov_pca.png figures/access_dis_pca.png figures/access_factors.png figures/access_pca.png clean_data.R utils.R 
 	Rscript -e "rmarkdown::render('report.Rmd')"
 	
