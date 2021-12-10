@@ -58,8 +58,17 @@ cat_dis$quartile <- factor(cat_dis$quartile,
                            levels = c(1,2,3,4),
                            labels = c("Lowest % Disabled", "Middle 50%", "Middle 50%", "Highest % Disabled")) 
 
+access_factors_nodis <- clean_data %>%
+  select(c("subway",
+           "park", 
+           "car_free_commute",
+           "mean_travel_time_to_work"))
+
+access.pca.nodis <- prcomp(access_factors_nodis, center = TRUE, scale. = TRUE)
+summary(access.pca)
+
 access.dis.pca.plot <- 
-  ggbiplot(access.pca, 
+  ggbiplot(access.pca.nodis, 
            ellipse=TRUE, 
            obs.scale = 1, 
            var.scale = 1, 
