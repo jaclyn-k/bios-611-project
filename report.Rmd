@@ -15,7 +15,9 @@ The places we live have an enormous effect on our everyday life, from the length
 Throughout this project I will explore two aims:
 1. Aim 1: Examine social determinants of health by neighborhood and poverty levels.
 2. Aim 2: Examine accessibility factors in relation to percent disabled in a neighborhood.
-*** 
+
+***
+
 ## Dataset
 
 The dataset I examined for this project was created by a PhD student working on a statistical analysis to understand extrinsic factors that influence the price of rent. (Full dataset available vai Kaggle https://www.kaggle.com/ted8080/nyc-housing-dataset-extrinsic-factors). In this project, I will explore these variables from a social determinants of health perspective.
@@ -48,12 +50,12 @@ First, I examined a few social determinants of health in relation to poverty lev
 In the figure below, each variable is plotted against poverty rate. Income is represented by dot color, where darker blues represent lower median income and lighter blue is higher median income. Income can serve as a "quality check" on data since it should roughly track with y-axis poverty rates. 
 
 ![Social Determinants of Health Exploratory Plot](figures/sdoh_exploratory.png)
-As expected, income (shade of blue) roughly follows poverty rate. From these plots, it seems like there might an interesting association between poverty rate and access to a subways and parks, while the other variables may not yield an interesting insights.
+As expected, income (shade of blue) roughly follows poverty rate. From these plots, it seems like there might an interesting association between poverty rate and access to subways and parks, while the other variables may not yield an interesting insights.
 
 In addition to this exploratory plot, I will also conduct a principal component analysis in order to see if neighborhoods might share similarities with their boros. 
 
 ![Principal Component Analysis of Social Determinants of Health (Grouped by Boro)](figures/sdoh_pca.png)
-From this PCA plot, we can see that Manhattan seems to have the most different set of SDOH's, whereas factors in Brooklyn and Bronx are a bit more similar. Queens and Staten Island also seem to face similar factors. 
+From this PCA plot, we can see that Manhattan seems to have the most distinctive set of SDOH's, whereas factors in Brooklyn and Bronx are a bit more similar. Queens and Staten Island also seem to face similar factors. 
 
 Let's remove poverty from the PCA and use that as the groups instead of boro. 
 
@@ -61,7 +63,7 @@ I will group neighborhoods into three groups: those in the bottom 25% for poores
 
 ![Principal Component Analysis of Social Determinants of Health (Grouped by Poverty Rate)](figures/sdoh_pov_pca.png)
 
-From this plot, we can see that neighborhoods tend to cluster with other neighborhoods that share similar poverty rates. 
+From this plot, we can see that neighborhoods in the quartile with the highest poverty rates (Blue) has factors that are nearly completely distinct from the lowest poverty rates (Red). The middle 50% of neighborhoods overlap with extreme ends of poverty and don't form a distinct cluster. 
 
 ### Aim 2: Do neighborhoods with higher rates of people with disabilities have less access to mobility? 
 
@@ -80,13 +82,13 @@ Next, I used principal component analysis to see if these factors related to dis
 
 ![Principal Component Analaysis of factors affecting access to services and disability, grouped by boro](figures/access_pca.png)
 
-Now, similar to the poverty PCA analysis from Aim 2, I removed disabled population from the PCA and use that as the groups instead of boro. I added a new variable for neighborhoods that are in the top quartile for highest proportion of people with disabilities.
+Now, similar to the poverty PCA analysis from Aim 2, I removed disabled population from the PCA and use that as the groups instead of boro. I added a new variable for neighborhoods that are in the top quartile for highest proportion of people with disabilities. The resulting PCA does not have any distinctive clusters, meaning that neighborhoods with higher rates of disabilities don't have beetter access to transportation and parks. 
 
 ![Principal Component Analaysis of factors affecting access to services and disability, grouped by high proportion of people with disabilities](figures/access_dis_pca.png) 
 
 ## Conclusion
-
+These analyses have shown that neighborhoods with similar poverty rates at the extreme ends (very high or low) tend to also share other similar social determinants. Boros are also have distinctive sets of social determinants of health, which can be expected due to geography. Lastly, neighborhoods with higher rates of disabilties do not seem to have better access to resources like subways, car-free-commute, or parks. This could result in health inequities for people living with disabilties. 
 
 
 ## Future Directions
-In future research, I plan to study how various social determinants of health may related to the COVID-19 case counts, deaths, or hopsitalizations observed in that neighborhood. I will also attempt to map these data points to a map of New York City neighborhoods. 
+In future research, I plan to study how various social determinants of health may related to the COVID-19 case counts, deaths, or hospitalizations observed in that neighborhood. I will also attempt to map these data points to a map of New York City neighborhoods. 
