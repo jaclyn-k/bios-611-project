@@ -1,6 +1,7 @@
 
 # Setup -------------------------------------------------------------------
 
+setwd("~/work")
 install.packages("shiny");
 rawdata <- read.csv("./NYC_Housing_Data.csv")
 
