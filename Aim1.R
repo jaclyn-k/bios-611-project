@@ -32,7 +32,7 @@ sdoh_exploratory<- sdohfactors  %>%
   stat_smooth() +
   facet_wrap(~ var, scales = "free") +
   labs(title = "Figure 1a: Social Determinants vs. Poverty")
-sdoh_exploratory
+
 ggsave("figures/sdoh_exploratory.png", sdoh_exploratory)
 
 # Notes: Would like to look more closely access to subway and poverty rate
@@ -63,8 +63,19 @@ cat_pov$quartile <- factor(cat_pov$quartile,
                     levels = c(1,2,3,4),
                     labels = c("Lowest Poverty", "Middle 50%", "Middle 50%", "Highest Poverty")) 
 
-sdoh.pov.pca <- 
-  ggbiplot(sdoh.pca, 
+sdohfactors_nopov_noincome <- select(clean_data, c("public_housing", 
+                                    "park", 
+                                    "median_rent", 
+                                    "population_density", 
+                                    "car_free_commute",
+                                    "mean_travel_time_to_work",
+                                    "subway"))
+
+sdoh.pca.pov <- prcomp(sdohfactors_nopov_noincome, center = TRUE, scale. = TRUE)
+summary(sdoh.pca.pov)
+
+sdoh.pca.pov <- 
+  ggbiplot(sdoh.pca.pov, 
          ellipse=TRUE, 
          obs.scale = 1, 
          var.scale = 1, 
@@ -72,5 +83,5 @@ sdoh.pov.pca <-
   theme(legend.position = "bottom") +
   labs(title = "Figure 1c: PCA of Social Determinants, Grouped by Boro")
 
-ggsave("figures/sdoh_pov_pca.png", sdoh.pov.pca)
+ggsave("figures/sdoh_pov_pca.png", sdoh.pca.pov)
 
